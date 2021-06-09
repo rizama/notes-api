@@ -21,6 +21,7 @@
                 "destructuring": "all"
             }
         ],
-        "max-len": ["error", { "code": 150 }]
+        "max-len": ["error", { "code": 150 }],
+        "object-curly-spacing": "warn"
     }
 }
