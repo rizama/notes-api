@@ -1,11 +1,15 @@
 require('dotenv').config();
 const Hapi = require('@hapi/hapi');
+
 const notes = require('./api/notes');
 const NotesService = require('./services/postgres/NotesService');
 const NotesValidator = require('./validator/notes');
+
 const users = require('./api/users');
 const UsersService = require('./services/postgres/UserService');
 const UsersValidator = require('./validator/users');
+
+const authentications = require('./api/authentications');
 
 const init = async () => {
     const notesService = new NotesService();
@@ -35,6 +39,9 @@ const init = async () => {
                 service: usersService,
                 validator: UsersValidator,
             },
+        },
+        {
+            plugin: authentications,
         },
     ]);
 
