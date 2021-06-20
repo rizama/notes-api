@@ -1,5 +1,5 @@
 const authenticationsService = require('../../services/postgres/AuthenticationsService');
-const usersService = require('../../services/postgres/UserService');
+const UsersService = require('../../services/postgres/UserService');
 const tokenManager = require('../../tokenize/TokenManager');
 const validator = require('../../validator/authentications');
 const { responseError } = require('../../utils');
@@ -9,6 +9,7 @@ const AuthenticationsHandler = {
         try {
             validator.validatePostAuthenticationPayload(request.payload);
             const { username, password } = request.payload;
+            const usersService = new UsersService();
             const id = await usersService.verifyUserCredential(
                 username,
                 password
