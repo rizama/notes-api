@@ -1,5 +1,8 @@
 const { Pool } = require('pg');
-const { InvariantError } = require('../../exceptions/InvariantError');
+
+const InvariantError = require('../../exceptions/InvariantError');
+
+const _pool = new Pool();
 
 const AuthenticationsService = {
     async addRefreshToken(token) {
@@ -8,7 +11,7 @@ const AuthenticationsService = {
             values: [token],
         };
 
-        await Pool.query(query);
+        await _pool.query(query);
     },
 
     async verifyRefreshToken(token) {
@@ -17,7 +20,7 @@ const AuthenticationsService = {
             values: [token],
         };
 
-        const result = await Pool.query(query);
+        const result = await _pool.query(query);
 
         if (!result.rowCount) {
             throw new InvariantError('Refresh token tidak valid');
@@ -32,7 +35,7 @@ const AuthenticationsService = {
             values: [token],
         };
 
-        await Pool.query(query);
+        await _pool.query(query);
     },
 };
 
