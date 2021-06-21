@@ -20,6 +20,8 @@ class NotesService {
             values: [id, title, body, tags, createdAt, updatedAt, owner],
         };
 
+        console.log(query);
+
         const result = await this._pool.query(query);
 
         if (!result.rows[0].id) {
