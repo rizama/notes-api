@@ -12,6 +12,14 @@ class NotesHandler {
         this.deleteNoteByIdHandler = this.deleteNoteByIdHandler.bind(this);
     }
 
+    // eslint-disable-next-line class-methods-use-this
+    async index() {
+        return {
+            status: 'success',
+            message: 'API Notes',
+        };
+    }
+
     async postNoteHandler(request, h) {
         try {
             this._validator.validateNotePayload(request.payload);

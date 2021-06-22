@@ -1,5 +1,10 @@
 const routes = (handler) => [
     {
+        method: 'GET',
+        path: '/',
+        handler: handler.index,
+    },
+    {
         method: 'POST',
         path: '/notes',
         handler: handler.postNoteHandler,
