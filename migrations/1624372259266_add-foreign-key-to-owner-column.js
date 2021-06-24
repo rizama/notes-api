@@ -11,7 +11,7 @@ exports.up = (pgm) => {
     pgm.addConstraint(
         'notes',
         'fk_notes.owner_users.id',
-        'FOREIGN KEY(owner) REFERENCES users(id) ON DELETE CASCADE'
+        'FOREIGN KEY(owner) REFERENCES users(id) ON DELETE NO ACTION'
     );
 };
 
